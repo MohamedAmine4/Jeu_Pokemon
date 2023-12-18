@@ -33,6 +33,7 @@ public class Dresseur implements Serializable {
 	ArrayList<String> evolution3 = new ArrayList<>();// list evolution pokemon 3
 	HashMap<String, Integer> bonbon = new HashMap<>();// gagne +2 equiveau +1 perdu+0
 	ArrayList<Pokemon> pokemonCombat = new ArrayList<>();
+	static PrintWriter writer = null;
 	static int j = 1; // joueur 1
 	static int d1 = 1;// joueur 1 d2==2 joueur 2
 	static ArrayList<Dresseur> dres = new ArrayList<>();
@@ -346,7 +347,9 @@ public class Dresseur implements Serializable {
 			pokemonCombat.add(pokemons.get(2));
 		}
 	}
-
+		public static void message(String r) {
+			
+		}
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 
 		Serialisation ser = new Serialisation();
@@ -359,7 +362,7 @@ public class Dresseur implements Serializable {
 		d.lootBox();
 
 		Socket socket = null;
-		PrintWriter writer = null;
+		
 		BufferedReader consoleReader = null;
 
 		try {
@@ -393,6 +396,10 @@ public class Dresseur implements Serializable {
 						if (message.equals("11"))
 							System.out.println(" " + d);
 						else if (message.equals("22")) {
+							System.out.println("1:" + d.getPokemons().get(0));
+							System.out.println("2:" + d.getPokemons().get(1));
+							System.out.println("3:" + d.getPokemons().get(2));
+
 							System.out.println(
 									"choisir deux pokemone pour le combat entrer un nemuro parmi 12,21,13,31,23,32");
 							String poki = consoleReader.readLine();
@@ -408,7 +415,7 @@ public class Dresseur implements Serializable {
 								ser.serialiser(d);
 								// Dresseur donnes= (Dresseur) des.deserialiser(); //contient le dreseur
 								// adversaire
-								System.out.println("le serialiser");
+								System.out.println("Attendez que l'autre joueur entre");
 							} else {
 								Dresseur donnes = (Dresseur) des.deserialiser();
 
@@ -416,10 +423,10 @@ public class Dresseur implements Serializable {
 								Dresseur dresseurperdu = c.combattree(d, donnes);
 								if (dresseurperdu.equals(d)) {
 									donnes.AugmenterNiveau();
-									writer.println("le dresseur gagnant est " + donnes.getNom());
-									writer.println("avec une resultats final " + donnes.Afficher());
-									writer.println("le dresseur perdu est " + d.getNom());
-									writer.println("avec une resultats final " + d.Afficher());
+									writer.println("😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀 \n le dresseur gagnant est" + donnes.getNom());
+									writer.println("avec un resultat final \n" + donnes.Afficher());
+									writer.println("😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞 \n le dresseur perdant est " + d.getNom());
+									writer.println("avec un resultat final \n" + d.Afficher());
 								} else {
 									d.AugmenterNiveau();
 //									for (Pokemon pokemon : d.getPokemons()) {
@@ -428,10 +435,10 @@ public class Dresseur implements Serializable {
 //									    }
 //									}
 
-									writer.println("le dresseur gagnant est " + d.getNom());
-									writer.println("avec une resultats final " + d.Afficher());
-									writer.println("le dresseur perdu est " + donnes.getNom());
-									writer.println("avec une resultats final " + donnes.Afficher());
+									writer.println("😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀 \n le dresseur gagnant est " + d.getNom());
+									writer.println("avec un resultat final \n" + d.Afficher());
+									writer.println("😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞 \n le dresseur perdant est " + donnes.getNom());
+									writer.println("avec un resultat final \n " + donnes.Afficher());
 								}
 
 							}

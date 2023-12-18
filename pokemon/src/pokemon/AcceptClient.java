@@ -11,15 +11,19 @@ import java.util.List;
 public class AcceptClient extends Thread {
 	private Socket clientSocket;
 	private List<PrintWriter> clientWriters;
-	private static String username;
+	protected static String username;
 
 	public AcceptClient(Socket clientSocket, List<PrintWriter> clientWriters) {
 		this.clientSocket = clientSocket;
 		this.clientWriters = clientWriters;
 	}
 
-	public static String usrname() {
-		return username;
+//	public static String usrname() {
+//		return username;
+//	}
+
+	public static void setUsername(String username) {
+		AcceptClient.username = username;
 	}
 
 	@Override
@@ -45,15 +49,12 @@ public class AcceptClient extends Thread {
 			Object message;
 			while ((message = reader.readLine()) != null) {
 
-				System.out.println(username + ": " + message);
+//				System.out.println(username + ": " + message);
+				System.out.println( message);
+//				new BroadcastMessage(clientWriters).broadcast(username + ": " + message);
+				new BroadcastMessage(clientWriters).broadcast((String) message);
 
-				new BroadcastMessage(clientWriters).broadcast(username + ": " + message);
-
-				if (message.equals("12") || message.equals("13") || message.equals("32")) {
-
-					System.out.println("le message  " + message);
-
-				}
+				
 
 			}
 

@@ -62,9 +62,8 @@ public class Pokemon implements Serializable {
 		getEvolution().add(p);
 
 	}
-
 	public String Afficher() {
-		return " \n nom=" + nom + ", type=" + type + ", pc=" + pc + ", pv=" + pv + "\n evolution=" + evolution + "";
+		return " \n nom=" + nom + ", type=" + type + ", pc=" + pc + ", pv=" + pv + " evolution=" + evolution + "\n";
 	}
 
 	@Override

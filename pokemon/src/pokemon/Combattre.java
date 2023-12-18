@@ -38,12 +38,12 @@ public class Combattre {
 	}
 
 	public void attaque(Dresseur d1, Dresseur d2) {
-		// dresseur 1 va attaquer le dresseur 2
-//    	System.out.println(d1.toString());
-//    	System.out.println(d2.toString());
 		if (!d1.getPokemonCombat().isEmpty() && !d2.getPokemonCombat().isEmpty()) {
+			String typepokattaque=d1.getPokemonCombat().get(0).getType();
+			String typePokDefense=d2.getPokemonCombat().get(0).getType();
 			int PCd1 = d1.getPokemonCombat().get(0).getPc();
 			int PVd2 = d2.getPokemonCombat().get(0).getPv();
+			 double coefficient = TypePokemon.obtenirCoefficient(typepokattaque, typePokDefense);
 			d2.getPokemonCombat().get(0).DiminuerPv(PCd1);
 		} else
 			return;
@@ -60,7 +60,7 @@ public class Combattre {
 				d1.SupprimerPokemonCombat(d1.getPokemonCombat().get(0));
 
 			}
-
+			
 			if (d2.getPokemonCombat().get(0).getPv() <= 0) {
 				d2.getPokemonCombat().get(0).PV0();
 				nomPokemon = d2.getPokemonCombat().get(nbPokemon).getNom();
@@ -88,17 +88,54 @@ public class Combattre {
 			role++;
 			if (role % 2 != 0) // role de joueur 1 c a dire le joueur 1 qui va attaquer le joueur 2
 			{
+				AcceptClient.setUsername(d1.getNom());
+				 try {
+					 d1.writer.println("Maintenant le dresseur:"+d1.getNom()+" qui attaque");
+					Thread.sleep(10000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				attaque(d1, d2);
+			
+				d1.writer.println("*******************************************etat de pokemon de attaquant "+d1.getNom()+":*******************************************\n"+d1.getPokemonCombat().get(0).Afficher());
+				
+				d2.writer.println("*******************************************etat de pokemon de defenseur "+d2.getNom()+":*******************************************\n"+d2.getPokemonCombat().get(0).Afficher());
+				
+				 try {
+					 d1.writer.println("*******************************************il prepare son pokemon******************************************* ");
+					Thread.sleep(20000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			} else {// role de joueur 2 c a dire le joueur 2 qui va attaquer le joueur 1
-
+				AcceptClient.setUsername(d2.getNom());
+				try {
+					d2.writer.println("Maintenant le dresseur:"+d2.getNom()+" qui va attaquer");
+					Thread.sleep(10000);
+					
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				attaque(d2, d1);
-
+				d2.writer.println("*******************************************etat de pokemon de attaquant "+d2.getNom()+":*******************************************\n"+d2.getPokemonCombat().get(0).Afficher());
+				
+				d1.writer.println("*******************************************etat de pokemon de defenseur  "+d1.getNom()+":*******************************************\n"+d1.getPokemonCombat().get(0).Afficher());
+				 try {
+					Thread.sleep(20000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			mortPokemon(d1, d2);
 
 		} while (!d1.getPokemonCombat().isEmpty() && !d2.getPokemonCombat().isEmpty());
-
-		if (d1.getPokemonCombat().isEmpty()) {
+         
+           
+           if (d1.getPokemonCombat().isEmpty()) {
 			return d1;
 		}
 		return d2;

@@ -25,7 +25,7 @@ public class Game {
 		System.out.println(
 				"*********************** Bonjour Dans le jeu de Pokemon : Voila le Menu de Combat*************************");
 		System.out.println("11:Vos Pokemons ");
-		System.out.println("22:entrer les nemuros des pokemons que tu vas utuliser dans le combats ");
+		System.out.println("22:entrer les numeros des pokemons que tu vas utuliser dans le combats ");
 		System.out.println("33: Quitter");
 		System.out.println(
 				"************************************************ FIN ******************************************");
