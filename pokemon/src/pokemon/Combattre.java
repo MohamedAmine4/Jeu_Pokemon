@@ -16,8 +16,8 @@ public class Combattre {
 	 * premiere chose lorsque dresseur appel a combatre il faut qu'il choisit des
 	 * pokemons parmi ses pokemons pour l'utuliser pour combattre
 	 * 
-	 * deuxieme etape: il faut une fonction attaque qui va prend en parametre le
-	 * dresseur qui va attaquer
+	 * deuxieme etape: il faut une fonction attaque qui va prend en parametre les deux
+	 * dresseur 
 	 * 
 	 * 
 	 * 
