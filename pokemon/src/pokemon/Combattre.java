@@ -7,8 +7,8 @@ public class Combattre {
 	static int i = 0;
 	static int nbPokemon = 0;
 	private String nomPokemon;
-	ArrayList<Pokemon> pokemonsCombatd1 = new ArrayList<>();
-	ArrayList<Pokemon> pokemonsCombatd2 = new ArrayList<>();
+	static ArrayList<Pokemon> pokemonsCombatd1 = new ArrayList<>();
+	static ArrayList<Pokemon> pokemonsCombatd2 = new ArrayList<>();
 	Dresseur d1 = new Dresseur("", 1);
 	Dresseur d2 = new Dresseur("", 1);
 
@@ -91,7 +91,7 @@ public class Combattre {
 				AcceptClient.setUsername(d1.getNom());
 				 try {
 					 d1.writer.println("Maintenant le dresseur:"+d1.getNom()+" qui attaque");
-					Thread.sleep(10000);
+					Thread.sleep(8000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -104,7 +104,7 @@ public class Combattre {
 				
 				 try {
 					 d1.writer.println("*******************************************il prepare son pokemon******************************************* ");
-					Thread.sleep(20000);
+					Thread.sleep(9000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -113,7 +113,7 @@ public class Combattre {
 				AcceptClient.setUsername(d2.getNom());
 				try {
 					d2.writer.println("Maintenant le dresseur:"+d2.getNom()+" qui va attaquer");
-					Thread.sleep(10000);
+					Thread.sleep(9000);
 					
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
@@ -124,7 +124,7 @@ public class Combattre {
 				
 				d1.writer.println("*******************************************etat de pokemon de defenseur  "+d1.getNom()+":*******************************************\n"+d1.getPokemonCombat().get(0).Afficher());
 				 try {
-					Thread.sleep(20000);
+					Thread.sleep(9000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

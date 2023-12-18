@@ -423,10 +423,18 @@ public class Dresseur implements Serializable {
 								Dresseur dresseurperdu = c.combattree(d, donnes);
 								if (dresseurperdu.equals(d)) {
 									donnes.AugmenterNiveau();
-									writer.println("😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀 \n le dresseur gagnant est" + donnes.getNom());
+									writer.println("😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀 \n le dresseur gagnant est " + donnes.getNom());
 									writer.println("avec un resultat final \n" + donnes.Afficher());
 									writer.println("😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞 \n le dresseur perdant est " + d.getNom());
 									writer.println("avec un resultat final \n" + d.Afficher());
+									ser.vider();
+									try {
+										Thread.sleep(8000);
+									} catch (InterruptedException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+									break;
 								} else {
 									d.AugmenterNiveau();
 //									for (Pokemon pokemon : d.getPokemons()) {
@@ -439,6 +447,14 @@ public class Dresseur implements Serializable {
 									writer.println("avec un resultat final \n" + d.Afficher());
 									writer.println("😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞😞 \n le dresseur perdant est " + donnes.getNom());
 									writer.println("avec un resultat final \n " + donnes.Afficher());
+									ser.vider();
+									try {
+										Thread.sleep(8000);
+									} catch (InterruptedException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+									break;
 								}
 
 							}
